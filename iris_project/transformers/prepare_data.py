@@ -21,7 +21,7 @@ def transform(df: pd.DataFrame, *args, **kwargs) -> pd.DataFrame:
     Prepares iris dataset by adding train/test split column.
     Accepts runtime variable 'test_size' (default 0.2).
     """
-    test_size = kwargs.get('test_size', 0.2)
+    test_size = kwargs.get('test_size', 0.3)
     # Ensure float conversion if passed as string or float
     test_size = float(test_size)
 
