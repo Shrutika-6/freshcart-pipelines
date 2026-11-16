@@ -403,26 +403,43 @@ def build_pdf(filename="23bcs232_Shende_Shrutika_Ashok_Pipelines.pdf"):
     story.append(PageBreak())
     story.append(Paragraph("Appendix: Execution & Pipeline Screenshots", h1_style))
     story.append(Paragraph(
-        "Below are the verified execution screenshots across the platform: GitHub Actions CI/CD quality gates, "
+        "Below are all the verified execution screenshots across the platform: GitHub Actions CI/CD quality gates (Passing, Failing, Fix, and Full History), "
         "Snowflake Snowsight worksheet medallion baseline metrics, and Mage.ai UI DAG execution showing the evaluation branch.",
         body_style
     ))
     story.append(Spacer(1, 4))
 
     story.append(Paragraph("<b>1. CI/CD Quality Gate Screenshots (Part A3):</b>", h2_style))
+    story.append(Paragraph("<b>(a) Initial Green (Passing) Run:</b>", body_style))
+    if os.path.exists("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_green_1.png"):
+        story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_green_1.png", width=520, height=180))
+        story.append(Spacer(1, 4))
+
+    story.append(Paragraph("<b>(b) Red (Failing) Run — Triggered by test_size=0.3 in prepare_data.py:</b>", body_style))
+    if os.path.exists("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_red_2.png"):
+        story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_red_2.png", width=520, height=180))
+        story.append(Spacer(1, 4))
+
+    story.append(PageBreak())
+    story.append(Paragraph("<b>(c) Restored Green (Passing) Run — Following Fix Commit (test_size=0.2):</b>", body_style))
+    if os.path.exists("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_fixed_3.png"):
+        story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_fixed_3.png", width=520, height=180))
+        story.append(Spacer(1, 4))
+
+    story.append(Paragraph("<b>(d) Complete GitHub Actions Execution History:</b>", body_style))
     if os.path.exists("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_full_history.png"):
-        story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_full_history.png", width=520, height=210))
+        story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/ci_full_history.png", width=520, height=180))
         story.append(Spacer(1, 6))
 
+    story.append(PageBreak())
     story.append(Paragraph("<b>2. Snowflake Snowsight Worksheet Baseline Output (Part B1):</b>", h2_style))
     if os.path.exists("c:/Users/Asus/Desktop/DE/freshcart-pipelines/snowflake_worksheet_output.png"):
         story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/snowflake_worksheet_output.png", width=520, height=230))
         story.append(Spacer(1, 6))
 
-    story.append(PageBreak())
     story.append(Paragraph("<b>3. Mage UI Pipeline DAG with Evaluation Branch (Part C3):</b>", h2_style))
     if os.path.exists("c:/Users/Asus/Desktop/DE/freshcart-pipelines/mage_ui_graph_screenshot.png"):
-        story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/mage_ui_graph_screenshot.png", width=520, height=270))
+        story.append(Image("c:/Users/Asus/Desktop/DE/freshcart-pipelines/mage_ui_graph_screenshot.png", width=520, height=230))
         story.append(Spacer(1, 6))
 
     doc.build(story)
